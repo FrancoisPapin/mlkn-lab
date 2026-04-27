@@ -462,35 +462,33 @@ document.addEventListener('DOMContentLoaded', function () {
       return 1;
     });
 
-    // Intra-links
-    intraSel.style('opacity', function (d) {
-      if (bridgesOnly) return 0.03;
-      if (!activeFilter) return 1;
-      var sid = typeof d.source === 'object' ? d.source.id : d.source;
-      var tid = typeof d.target === 'object' ? d.target.id : d.target;
-      var ns = data.nodes.find(function (n) { return n.id === sid; });
-      var nt = data.nodes.find(function (n) { return n.id === tid; });
-      if (activeLayer === 'disc') {
-        return (ns && ns.disc === activeFilter) || (nt && nt.disc === activeFilter) ? 1 : 0.03;
-      }
-      return 1;
-    });
+    // Intra-links (Dans function applyFilters)
+intraSel.style('opacity', function (d) {
+  if (bridgesOnly) return 0.03;
+  if (!activeFilter) return 1;
+  var sid = typeof d.source === 'object' ? d.source.id : d.source;
+  var tid = typeof d.target === 'object' ? d.target.id : d.target;
+  var ns = data.nodes.find(function (n) { return n.id === sid; });
+  var nt = data.nodes.find(function (n) { return n.id === tid; });
+  
+  if (activeLayer === 'disc') {
+    // SOLUTION : On utilise && (ET) pour ne garder que les liens internes
+    return (ns && ns.disc === activeFilter) && (nt && nt.disc === activeFilter) ? 1 : 0;
+  }
+  return 1;
+});
 
-    // Inter-links
-    interSel.style('opacity', function (d) {
-      if (!activeFilter) return 1;
-      var sid = typeof d.source === 'object' ? d.source.id : d.source;
-      var tid = typeof d.target === 'object' ? d.target.id : d.target;
-      var ns = data.nodes.find(function (n) { return n.id === sid; });
-      var nt = data.nodes.find(function (n) { return n.id === tid; });
-      if (activeLayer === 'disc') {
-        return (ns && ns.disc === activeFilter) || (nt && nt.disc === activeFilter) ? 1 : 0.03;
-      }
-      return 1;
-    }).style('stroke-width', function (d) {
-      var base = (d.weight || 1) >= 4 ? Math.max(1.5, (d.weight || 1) * 0.9) : Math.max(0.7, (d.weight || 1) * 0.5);
-      return bridgesOnly ? base * 1.4 : base;
-    });
+    // Inter-links (Dans function applyFilters)
+interSel.style('opacity', function (d) {
+  if (!activeFilter) return 1;
+  if (activeLayer === 'disc') {
+    // SOLUTION : On met l'opacité à 0 pour cacher tous les ponts inter-disciplines
+    // dès qu'un filtre par discipline est actif.
+    return 0; 
+  }
+  return 1;
+});
+    
 
     // Restyle node colours per layer
     nodeSel.select('.mn').attr('fill', nodeLight).attr('stroke', nodeColor);
