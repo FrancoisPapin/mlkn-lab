@@ -157,19 +157,11 @@ function initMap(data){
   });
 
 
-  /* --- Keyboard Support --- */
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    // Vérifie si la fonction existe pour éviter une erreur "is not defined"
-    if (typeof hideDetail === 'function') {
-      hideDetail();
-    } 
-    // Si vous utilisez un objet global MLKN
-    else if (window.MLKN && typeof MLKN.hideDetail === 'function') {
-      MLKN.hideDetail();
-    }
-  }
-}); // <--- L'écouteur s'arrête ici. Pas de "}" supplémentaire après.
+  /* Keyboard */
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){hideDetail();}
+  });
+}
   
 
 /* Legend */
