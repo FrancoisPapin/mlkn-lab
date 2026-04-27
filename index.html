@@ -254,69 +254,70 @@ document.addEventListener('DOMContentLoaded', function(){
 
     grid.appendChild(card);
 
-    // Draw decorative preview canvas
-    requestAnimationFrame(function(){ drawPreview(net.id, net.colors); });
-  });
 
-function drawPreview(id, colors){
-    var cv = document.getElementById('prev-'+id);
-    if(!cv || !cv.getContext) return;
+    grid.appendChild(card);
+
+    // On utilise une fonction nommée pour éviter les erreurs de portée
+    (function(currentNet) {
+      setTimeout(function() {
+        if (typeof drawPreview === 'function') {
+          drawPreview(currentNet.id, currentNet.colors);
+        }
+      }, 100);
+    })(net);
+  }); // Fin du forEach
+
+  function drawPreview(id, colors) {
+    var cv = document.getElementById('prev-' + id);
+    if (!cv) return; // Sécurité si le canvas n'existe pas encore
     var ctx = cv.getContext('2d');
+    if (!ctx) return;
+    
     var w = cv.width, h = cv.height;
-    ctx.clearRect(0,0,w,h);
+    ctx.clearRect(0, 0, w, h);
 
-    // Seeded RNG
-    var s = 0;
-    for(var i=0;i<id.length;i++) s = (s*31 + id.charCodeAt(i)) & 0xffffffff;
-    function rng(){ s=(s*9301+49297)%233280; return s/233280; }
+    // Seed simple et robuste
+    var s = id.length * 777; 
+    function rng() { s = (s * 9301 + 49297) % 233280; return s / 233280; }
 
-    var nodes=[], n=20;
-    for(var k=0;k<n;k++){
-      // CORRECTION ICI : Math.abs() assure que le rayon est toujours positif
-      var radius = 3 + rng() * 8; 
+    var nodes = [], n = 20;
+    for (var k = 0; k < n; k++) {
       nodes.push({
-        x: 18 + rng() * (w - 36), 
+        x: 18 + rng() * (w - 36),
         y: 10 + rng() * (h - 20),
-        r: Math.abs(radius), 
-        c: colors[Math.floor(rng() * colors.length)]
+        r: 3 + rng() * 5,
+        c: colors[Math.floor(rng() * colors.length)] || '#cccccc'
       });
     }
 
-    // Edges
-    ctx.globalAlpha=0.12;
-    for(var a=0;a<n;a++){
-      for(var b=a+1;b<n;b++){
-        if(rng()>0.8){
+    // Dessin des liens
+    ctx.globalAlpha = 0.15;
+    for (var a = 0; a < n; a++) {
+      for (var b = a + 1; b < n; b++) {
+        if (rng() > 0.8) {
           ctx.beginPath();
-          ctx.moveTo(nodes[a].x,nodes[a].y);
-          ctx.lineTo(nodes[b].x,nodes[b].y);
-          ctx.strokeStyle=nodes[a].c;
-          ctx.lineWidth=0.8;
+          ctx.moveTo(nodes[a].x, nodes[a].y);
+          ctx.lineTo(nodes[b].x, nodes[b].y);
+          ctx.strokeStyle = nodes[a].c;
           ctx.stroke();
         }
       }
     }
-    
-    // Nodes
-    ctx.globalAlpha=1;
-    nodes.forEach(function(nd){
-      // Sécurité supplémentaire : on s'assure que nd.r est bien positif avant de dessiner
-      var safeR = Math.max(0.1, nd.r);
+
+    // Dessin des points
+    ctx.globalAlpha = 1;
+    nodes.forEach(function(nd) {
       ctx.beginPath();
-      ctx.arc(nd.x, nd.y, safeR, 0, Math.PI*2);
-      ctx.fillStyle=nd.c+'22';
+      ctx.arc(nd.x, nd.y, nd.r, 0, Math.PI * 2);
+      ctx.fillStyle = nd.c + '33';
       ctx.fill();
-      ctx.strokeStyle=nd.c;
-      ctx.lineWidth=1.2;
+      ctx.strokeStyle = nd.c;
+      ctx.lineWidth = 1;
       ctx.stroke();
-      
-      ctx.beginPath();
-      ctx.arc(nd.x, nd.y, safeR * 0.32, 0, Math.PI*2);
-      ctx.fillStyle=nd.c;
-      ctx.fill();
     });
   }
-});
+}); // Fin du DOMContentLoaded
+  
 </script>
 </body>
 </html>
