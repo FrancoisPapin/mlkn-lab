@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function(){
     requestAnimationFrame(function(){ drawPreview(net.id, net.colors); });
   });
 
-  function drawPreview(id, colors){
+function drawPreview(id, colors){
     var cv = document.getElementById('prev-'+id);
     if(!cv || !cv.getContext) return;
     var ctx = cv.getContext('2d');
@@ -267,8 +267,14 @@ document.addEventListener('DOMContentLoaded', function(){
 
     var nodes=[], n=20;
     for(var k=0;k<n;k++){
-      nodes.push({x:18+rng()*(w-36), y:10+rng()*(h-20),
-        r:3+rng()*8, c:colors[Math.floor(rng()*colors.length)]});
+      // CORRECTION ICI : Math.abs() assure que le rayon est toujours positif
+      var radius = 3 + rng() * 8; 
+      nodes.push({
+        x: 18 + rng() * (w - 36), 
+        y: 10 + rng() * (h - 20),
+        r: Math.abs(radius), 
+        c: colors[Math.floor(rng() * colors.length)]
+      });
     }
 
     // Edges
@@ -276,19 +282,33 @@ document.addEventListener('DOMContentLoaded', function(){
     for(var a=0;a<n;a++){
       for(var b=a+1;b<n;b++){
         if(rng()>0.8){
-          ctx.beginPath();ctx.moveTo(nodes[a].x,nodes[a].y);ctx.lineTo(nodes[b].x,nodes[b].y);
-          ctx.strokeStyle=nodes[a].c;ctx.lineWidth=0.8;ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(nodes[a].x,nodes[a].y);
+          ctx.lineTo(nodes[b].x,nodes[b].y);
+          ctx.strokeStyle=nodes[a].c;
+          ctx.lineWidth=0.8;
+          ctx.stroke();
         }
       }
     }
+    
     // Nodes
     ctx.globalAlpha=1;
     nodes.forEach(function(nd){
-      ctx.beginPath();ctx.arc(nd.x,nd.y,nd.r,0,Math.PI*2);
-      ctx.fillStyle=nd.c+'22';ctx.fill();
-      ctx.strokeStyle=nd.c;ctx.lineWidth=1.2;ctx.stroke();
-      ctx.beginPath();ctx.arc(nd.x,nd.y,nd.r*0.32,0,Math.PI*2);
-      ctx.fillStyle=nd.c;ctx.fill();
+      // Sécurité supplémentaire : on s'assure que nd.r est bien positif avant de dessiner
+      var safeR = Math.max(0.1, nd.r);
+      ctx.beginPath();
+      ctx.arc(nd.x, nd.y, safeR, 0, Math.PI*2);
+      ctx.fillStyle=nd.c+'22';
+      ctx.fill();
+      ctx.strokeStyle=nd.c;
+      ctx.lineWidth=1.2;
+      ctx.stroke();
+      
+      ctx.beginPath();
+      ctx.arc(nd.x, nd.y, safeR * 0.32, 0, Math.PI*2);
+      ctx.fillStyle=nd.c;
+      ctx.fill();
     });
   }
 });
