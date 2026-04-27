@@ -156,11 +156,21 @@ function initMap(data){
     srchT=setTimeout(function(){graph.filterSearch(srch.value.trim());},150);
   });
 
-  /* Keyboard */
-  document.addEventListener('keydown',function(e){
-    if(e.key==='Escape'){hideDetail();}
-  });
-}
+
+  /* --- Keyboard Support --- */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    // Vérifie si la fonction existe pour éviter une erreur "is not defined"
+    if (typeof hideDetail === 'function') {
+      hideDetail();
+    } 
+    // Si vous utilisez un objet global MLKN
+    else if (window.MLKN && typeof MLKN.hideDetail === 'function') {
+      MLKN.hideDetail();
+    }
+  }
+}); // <--- L'écouteur s'arrête ici. Pas de "}" supplémentaire après.
+  
 
 /* Legend */
 function buildLegend(clusters){
