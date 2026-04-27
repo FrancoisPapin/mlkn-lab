@@ -462,35 +462,35 @@ document.addEventListener('DOMContentLoaded', function () {
       return 1;
     });
 
- // Intra-links
-    intraSel.style('opacity', function (d) {
-      if (bridgesOnly) return 0.03;
-      if (!activeFilter) return 1;
-      var sid = typeof d.source === 'object' ? d.source.id : d.source;
-      var tid = typeof d.target === 'object' ? d.target.id : d.target;
-      var ns = data.nodes.find(function (n) { return n.id === sid; });
-      var nt = data.nodes.find(function (n) { return n.id === tid; });
-      if (activeLayer === 'disc') {
-        return (ns && ns.disc === activeFilter) || (nt && nt.disc === activeFilter) ? 1 : 0.03;
-      }
-      return 1;
-    });
+// --- 1. Intra-links (Liens au sein des disciplines) ---
+intraSel.style('opacity', function (d) {
+    if (!activeFilter) return 1; // Si aucun filtre, tout est visible
 
-    // Inter-links
-    interSel.style('opacity', function (d) {
-      if (!activeFilter) return 1;
-      var sid = typeof d.source === 'object' ? d.source.id : d.source;
-      var tid = typeof d.target === 'object' ? d.target.id : d.target;
-      var ns = data.nodes.find(function (n) { return n.id === sid; });
-      var nt = data.nodes.find(function (n) { return n.id === tid; });
-      if (activeLayer === 'disc') {
-        return (ns && ns.disc === activeFilter) || (nt && nt.disc === activeFilter) ? 1 : 0.03;
-      }
-      return 1;
-    }).style('stroke-width', function (d) {
-      var base = (d.weight || 1) >= 4 ? Math.max(1.5, (d.weight || 1) * 0.9) : Math.max(0.7, (d.weight || 1) * 0.5);
-      return bridgesOnly ? base * 1.4 : base;
-    });
+    // Sécurité pour récupérer la discipline de la source et de la cible
+    var sourceDisc = (typeof d.source === 'object') ? d.source.disc : null;
+    var targetDisc = (typeof d.target === 'object') ? d.target.disc : null;
+
+    // CONDITION STRICTE : 
+    // On n'affiche le lien QUE si la source ET la cible appartiennent à la discipline active
+    if (sourceDisc === activeFilter && targetDisc === activeFilter) {
+        return 1;
+    }
+    return 0; // Cache tout le reste
+}).style('display', function(d) {
+    // Force la disparition du DOM pour éviter les traits fantômes
+    var sourceDisc = (typeof d.source === 'object') ? d.source.disc : null;
+    var targetDisc = (typeof d.target === 'object') ? d.target.disc : null;
+    return (!activeFilter || (sourceDisc === activeFilter && targetDisc === activeFilter)) ? 'inline' : 'none';
+});
+
+// --- 2. Inter-links (Ponts entre disciplines) ---
+interSel.style('opacity', function (d) {
+    // Quand on sélectionne une discipline précise, on veut généralement 
+    // masquer tous les ponts vers les autres domaines.
+    return !activeFilter ? 1 : 0;
+}).style('display', function(d) {
+    return !activeFilter ? 'inline' : 'none';
+});
 
     
 
