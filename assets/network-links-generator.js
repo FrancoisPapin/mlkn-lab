@@ -226,6 +226,291 @@ const DISCIPLINE_CONFIG = {
   }
 }
 
+"Computer Science": {
+  clusters: [
+    "AI",        // Intelligence Artificielle
+    "THEORY",    // Théorie
+    "SYSTEMS",   // Systèmes
+    "DATA",      // Données
+    "HCI",       // Interaction Homme-Machine
+    "SECURITY",  // Sécurité
+    "EMERGING",  // Technologies émergentes
+    "SE"         // Génie Logiciel
+  ],
+  clusterConnections: {
+    // Connexions logiques entre clusters
+    "AI": ["THEORY", "DATA", "SYSTEMS", "HCI", "EMERGING"],  // L'IA utilise la théorie, les données, les systèmes, l'interaction HCI et les technologies émergentes
+    "THEORY": ["AI", "SYSTEMS", "DATA", "SECURITY"],          // La théorie sous-tend l'IA, les systèmes, les données et la sécurité
+    "SYSTEMS": ["AI", "THEORY", "DATA", "SECURITY", "SE", "EMERGING"], // Les systèmes sont liés à l'IA, la théorie, les données, la sécurité, le génie logiciel et les technologies émergentes
+    "DATA": ["AI", "THEORY", "SYSTEMS", "HCI", "SECURITY"],    // Les données sont centrales pour l'IA, la théorie, les systèmes, l'HCI et la sécurité
+    "HCI": ["AI", "DATA", "SYSTEMS", "EMERGING"],             // L'HCI est liée à l'IA, les données, les systèmes et les technologies émergentes
+    "SECURITY": ["THEORY", "SYSTEMS", "DATA", "EMERGING"],    // La sécurité dépend de la théorie, des systèmes, des données et des technologies émergentes
+    "EMERGING": ["AI", "SYSTEMS", "DATA", "HCI", "SECURITY"],  // Les technologies émergentes combinent IA, systèmes, données, HCI et sécurité
+    "SE": ["SYSTEMS", "THEORY", "DATA", "SECURITY"]           // Le génie logiciel repose sur les systèmes, la théorie, les données et la sécurité
+  },
+  expertLinks: [
+    // Liens forts (poids 4)
+    ["Machine Learning", "Deep Learning", 4],
+    ["Neural Networks", "Deep Learning", 4],
+    ["Natural Language Processing", "Machine Learning", 4],
+    ["Computer Vision", "Machine Learning", 4],
+    ["Reinforcement Learning", "Machine Learning", 4],
+    ["Algorithms", "Complexity Theory", 4],
+    ["Graph Theory", "Algorithms", 4],
+    ["Distributed Systems", "Cloud Computing", 4],
+    ["Operating Systems", "Computer Networks", 4],
+    ["Databases", "Big Data", 4],
+    ["Data Mining", "Big Data", 4],
+    ["Human-Computer Interaction", "User Experience", 4],
+    ["Computer Graphics", "Virtual Reality", 4],
+    ["Cybersecurity", "Network Security", 4],
+    ["Blockchain", "Cryptography", 4],
+    ["Software Engineering", "Programming Languages", 4],
+
+    // Liens moyens (poids 3)
+    ["Generative AI", "Machine Learning", 3],
+    ["Explainable AI", "Machine Learning", 3],
+    ["Optimization", "Algorithms", 3],
+    ["Cryptography", "Formal Methods", 3],
+    ["IoT", "Edge Computing", 3],
+    ["Information Retrieval", "Data Mining", 3],
+    ["Data Visualization", "Big Data", 3],
+    ["Virtual Reality", "Augmented Reality", 3],
+    ["Privacy", "Cybersecurity", 3],
+    ["Differential Privacy", "Privacy", 3],
+    ["Quantum Computing", "Algorithms", 3],
+    ["Robotics", "AI", 3],
+    ["Bioinformatics", "Data Mining", 3],
+    ["Federated Learning", "Machine Learning", 3],
+    ["Testing & Verification", "Formal Methods", 3],
+    ["DevOps", "Software Engineering", 3],
+
+    // Liens entre concepts transversaux
+    ["Machine Learning", "Databases", 3],
+    ["Cloud Computing", "Data Mining", 3],
+    ["Human-Computer Interaction", "AI", 3],
+    ["Security", "Blockchain", 3],
+    ["Edge Computing", "IoT", 3]
+  ],
+  conceptKeywords: {
+    // Intelligence Artificielle
+    "Machine Learning": ["ai", "learning", "models", "training", "prediction"],
+    "Deep Learning": ["neural-networks", "layers", "training", "gpu", "big-data"],
+    "Neural Networks": ["nodes", "weights", "activation", "backpropagation", "architecture"],
+    "Natural Language Processing": ["nlp", "text", "language", "semantics", "syntax"],
+    "Computer Vision": ["images", "recognition", "classification", "cnn", "features"],
+    "Reinforcement Learning": ["reward", "agent", "environment", "policy", "q-learning"],
+    "Generative AI": ["generation", "creativity", "gans", "transformers", "llm"],
+    "Explainable AI": ["interpretability", "transparency", "xai", "trust", "ethics"],
+
+    // Théorie
+    "Algorithms": ["complexity", "efficiency", "sorting", "searching", "recursion"],
+    "Complexity Theory": ["p-np", "computability", "big-o", "turing", "reducibility"],
+    "Graph Theory": ["nodes", "edges", "paths", "networks", "topology"],
+    "Optimization": ["minimization", "maximization", "constraints", "linear", "nonlinear"],
+
+    // Systèmes
+    "Distributed Systems": ["nodes", "communication", "fault-tolerance", "scalability", "consensus"],
+    "Cloud Computing": ["servers", "virtualization", "scalability", "iaas", "paas"],
+    "Operating Systems": ["kernel", "processes", "memory", "scheduling", "filesystem"],
+    "Computer Networks": ["protocols", "routing", "tcp-ip", "bandwidth", "latency"],
+
+    // Données
+    "Databases": ["sql", "nosql", "queries", "transactions", "indexing"],
+    "Big Data": ["volume", "velocity", "variety", "hadoop", "spark"],
+    "Data Mining": ["patterns", "clustering", "classification", "association", "anomalies"],
+    "Information Retrieval": ["search", "indexing", "ranking", "relevance", "query"],
+    "Data Visualization": ["charts", "graphs", "d3js", "interactive", "dashboard"],
+
+    // Interaction Homme-Machine
+    "Human-Computer Interaction": ["usability", "design", "interface", "user-centered", "accessibility"],
+    "User Experience": ["ux", "usability", "design", "feedback", "satisfaction"],
+    "Computer Graphics": ["rendering", "3d", "shaders", "opengl", "ray-tracing"],
+    "Virtual Reality": ["immersion", "3d", "headset", "simulation", "interaction"],
+    "Augmented Reality": ["overlay", "real-world", "mobile", "ar-glasses", "mixed-reality"],
+
+    // Sécurité
+    "Cybersecurity": ["threats", "vulnerabilities", "protection", "firewall", "encryption"],
+    "Network Security": ["firewall", "ids", "vpn", "authentication", "encryption"],
+    "Privacy": ["confidentiality", "anonymity", "gdpr", "data-protection", "consent"],
+    "Blockchain": ["decentralized", "ledger", "bitcoin", "smart-contracts", "consensus"],
+    "Differential Privacy": ["anonymization", "noise", "query", "privacy-preserving", "epsilon"],
+
+    // Technologies émergentes
+    "Quantum Computing": ["qubits", "superposition", "entanglement", "shor", "grover"],
+    "Robotics": ["automation", "sensors", "actuators", "ros", "autonomy"],
+    "Bioinformatics": ["genomics", "sequences", "alignment", "blast", "phylogeny"],
+
+    // Génie Logiciel
+    "Software Engineering": ["development", "lifecycle", "requirements", "design", "maintenance"],
+    "Programming Languages": ["syntax", "compiler", "interpreter", "paradigms", "frameworks"],
+    "Testing & Verification": ["unit-tests", "integration", "debugging", "validation", "verification"],
+    "DevOps": ["ci-cd", "automation", "deployment", "monitoring", "containers"],
+    "Federated Learning": ["distributed", "privacy", "collaborative", "model-aggregation", "local-training"]
+  }
+}
+
+"Education Science": {
+  clusters: [
+    "LEARNING",   // Théories et processus d'apprentissage
+    "PEDAGOGY",   // Méthodes et approches pédagogiques
+    "CURRICUL",   // Conception et organisation des programmes
+    "ASSESS",     // Évaluation et mesure des apprentissages
+    "SPECIAL",    // Éducation spécialisée et inclusive
+    "TECH",       // Technologies éducatives
+    "SOCIAL",     // Dimensions sociales et communautaires
+    "POLICY"      // Politiques et gouvernance éducative
+  ],
+  clusterConnections: {
+    // Connexions logiques entre clusters
+    "LEARNING": ["PEDAGOGY", "CURRICUL", "ASSESS", "SPECIAL", "TECH", "SOCIAL"],
+    // L'apprentissage est au cœur de la pédagogie, du curriculum, de l'évaluation, de l'inclusion, des technologies et des aspects sociaux
+
+    "PEDAGOGY": ["LEARNING", "CURRICUL", "ASSESS", "SPECIAL", "TECH", "SOCIAL"],
+    // La pédagogie influence directement l'apprentissage, le curriculum, l'évaluation, l'inclusion, les technologies et les aspects sociaux
+
+    "CURRICUL": ["LEARNING", "PEDAGOGY", "ASSESS", "SPECIAL", "POLICY"],
+    // Le curriculum est lié à l'apprentissage, à la pédagogie, à l'évaluation, à l'inclusion et aux politiques
+
+    "ASSESS": ["LEARNING", "PEDAGOGY", "CURRICUL", "TECH", "POLICY"],
+    // L'évaluation mesure l'apprentissage, guide la pédagogie, valide le curriculum, utilise les technologies et influence les politiques
+
+    "SPECIAL": ["LEARNING", "PEDAGOGY", "CURRICUL", "ASSESS", "SOCIAL", "POLICY"],
+    // L'éducation spécialisée s'appuie sur les théories d'apprentissage, les méthodes pédagogiques, le curriculum, l'évaluation, les aspects sociaux et les politiques
+
+    "TECH": ["LEARNING", "PEDAGOGY", "ASSESS", "POLICY"],
+    // Les technologies éducatives soutiennent l'apprentissage, la pédagogie, l'évaluation et sont encadrées par les politiques
+
+    "SOCIAL": ["LEARNING", "PEDAGOGY", "SPECIAL", "POLICY"],
+    // Les dimensions sociales impactent l'apprentissage, la pédagogie, l'inclusion et sont influencées par les politiques
+
+    "POLICY": ["CURRICUL", "ASSESS", "SPECIAL", "TECH", "SOCIAL"]
+    // Les politiques éducatives encadrent le curriculum, l'évaluation, l'inclusion, les technologies et les aspects sociaux
+  },
+  expertLinks: [
+    // Liens forts (poids 4) - Théories et concepts fondamentaux
+    ["Constructivism", "Situated Learning", 4],
+    ["Behaviorism", "Direct Instruction", 4],
+    ["Cognitivism", "Metacognition", 4],
+    ["Social Learning Theory", "Cooperative Learning", 4],
+    ["Zone of Proximal Dev.", "Scaffolding", 4],
+    ["Self-Regulated Learning", "Metacognition", 4],
+    ["Curriculum Design", "Standards-Based Education", 4],
+    ["Formative Assessment", "Feedback", 4],
+    ["Inclusive Education", "Universal Design for Learning", 4],
+    ["EdTech", "E-Learning", 4],
+    ["AI in Education", "Adaptive Learning", 4],
+
+    // Liens moyens (poids 3) - Approches et pratiques
+    ["Experiential Learning", "Project-Based Learning", 3],
+    ["Differentiated Instruction", "Individualized Learning", 3],
+    ["Inquiry-Based Learning", "Problem-Based Learning", 3],
+    ["Flipped Classroom", "Blended Learning", 3],
+    ["Mastery Learning", "Competency-Based Education", 3],
+    ["Summative Assessment", "Standardized Testing", 3],
+    ["Authentic Assessment", "Learning Analytics", 3],
+    ["Special Education", "Neurodiversity", 3],
+    ["Gamification", "Motivation (Ed)", 3],
+    ["MOOCs", "Blended Learning", 3],
+    ["Social-Emotional Learning", "School Climate", 3],
+    ["Educational Equity", "Cultural Capital", 3],
+    ["Teacher Professional Dev.", "School Reform", 3],
+    ["Higher Education", "Early Childhood Education", 3],
+
+    // Liens transversaux (poids 3)
+    ["Constructivism", "Project-Based Learning", 3],
+    ["Behaviorism", "Feedback Literacy", 3],
+    ["Cognitivism", "Transfer of Learning", 3],
+    ["Critical Pedagogy", "Educational Equity", 3],
+    ["Hidden Curriculum", "School Climate", 3],
+    ["Interdisciplinary Learning", "STEM / STEAM", 3],
+    ["Spiral Curriculum", "Competency-Based Education", 3],
+    ["Response to Intervention", "Special Education", 3],
+    ["Family Engagement", "School Climate", 3],
+    ["Education Funding", "Educational Policy", 3]
+  ],
+  conceptKeywords: {
+    // Théories et processus d'apprentissage
+    "Constructivism": ["learning", "construction", "knowledge", "piaget", "active"],
+    "Behaviorism": ["learning", "stimulus", "response", "skinner", "conditioning"],
+    "Cognitivism": ["learning", "cognition", "mental-processes", "information-processing", "memory"],
+    "Social Learning Theory": ["learning", "observation", "imitation", "bandura", "modeling"],
+    "Situated Learning": ["learning", "context", "authentic", "lave", "wenger"],
+    "Experiential Learning": ["learning", "experience", "reflection", "kolb", "cycle"],
+    "Self-Regulated Learning": ["learning", "self-direction", "metacognition", "strategies", "goals"],
+    "Metacognition": ["thinking", "learning", "awareness", "monitoring", "regulation"],
+    "Zone of Proximal Dev.": ["learning", "vygotsky", "potential", "scaffolding", "development"],
+    "Scaffolding": ["support", "learning", "guidance", "temporary", "vygotsky"],
+    "Transfer of Learning": ["learning", "application", "contexts", "generalization", "skills"],
+    "Motivation (Ed)": ["motivation", "engagement", "intrinsic", "extrinsic", "achievement"],
+
+    // Méthodes et approches pédagogiques
+    "Differentiated Instruction": ["teaching", "diversity", "adaptation", "needs", "flexibility"],
+    "Project-Based Learning": ["learning", "projects", "real-world", "collaboration", "problem-solving"],
+    "Inquiry-Based Learning": ["learning", "questions", "investigation", "discovery", "exploration"],
+    "Direct Instruction": ["teaching", "explicit", "structured", "scripted", "mastery"],
+    "Flipped Classroom": ["teaching", "inverted", "video", "homework", "class-time"],
+    "Cooperative Learning": ["learning", "group", "collaboration", "interdependence", "teamwork"],
+    "Problem-Based Learning": ["learning", "problems", "real-world", "investigation", "solutions"],
+    "Mastery Learning": ["learning", "mastery", "competency", "progression", "assessment"],
+    "Feedback Literacy": ["feedback", "understanding", "interpretation", "use", "improvement"],
+    "Critical Pedagogy": ["teaching", "critical", "social-justice", "empowerment", "freire"],
+
+    // Conception et organisation des programmes
+    "Curriculum Design": ["curriculum", "planning", "objectives", "content", "alignment"],
+    "Hidden Curriculum": ["curriculum", "implicit", "values", "norms", "unwritten"],
+    "Standards-Based Education": ["education", "standards", "benchmarks", "accountability", "alignment"],
+    "Interdisciplinary Learning": ["learning", "disciplines", "integration", "connections", "holistic"],
+    "STEM / STEAM": ["education", "science", "technology", "engineering", "math", "arts"],
+    "Competency-Based Education": ["education", "competencies", "skills", "mastery", "outcomes"],
+    "Spiral Curriculum": ["curriculum", "repetition", "depth", "progression", "bruner"],
+
+    // Évaluation et mesure des apprentissages
+    "Formative Assessment": ["assessment", "feedback", "progress", "adjustment", "learning"],
+    "Summative Assessment": ["assessment", "evaluation", "final", "grades", "achievement"],
+    "Standardized Testing": ["assessment", "standardized", "comparison", "norms", "accountability"],
+    "Authentic Assessment": ["assessment", "real-world", "tasks", "performance", "application"],
+    "Learning Analytics": ["data", "learning", "analysis", "patterns", "insights"],
+    "Rubrics": ["assessment", "criteria", "scoring", "transparency", "feedback"],
+    "Feedback": ["communication", "improvement", "specific", "timely", "actionable"],
+
+    // Éducation spécialisée et inclusive
+    "Inclusive Education": ["education", "diversity", "access", "equity", "participation"],
+    "Special Education": ["education", "disabilities", "iep", "accommodations", "support"],
+    "Neurodiversity": ["diversity", "neurological", "strengths", "differences", "inclusion"],
+    "Universal Design for Learning": ["design", "accessibility", "flexibility", "multiple-means", "udl"],
+    "Response to Intervention": ["education", "intervention", "tiered", "support", "progress-monitoring"],
+
+    // Technologies éducatives
+    "EdTech": ["technology", "education", "tools", "innovation", "digital"],
+    "E-Learning": ["learning", "online", "digital", "platforms", "virtual"],
+    "Gamification": ["learning", "games", "motivation", "engagement", "rewards"],
+    "MOOCs": ["education", "online", "massive", "open", "courses"],
+    "AI in Education": ["technology", "ai", "personalization", "automation", "adaptation"],
+    "Adaptive Learning": ["learning", "personalized", "technology", "adjustment", "pace"],
+    "Blended Learning": ["learning", "mix", "online", "face-to-face", "hybrid"],
+
+    // Dimensions sociales et communautaires
+    "Educational Equity": ["education", "fairness", "access", "opportunity", "justice"],
+    "Social-Emotional Learning": ["learning", "emotions", "relationships", "self-awareness", "empathy"],
+    "Cultural Capital": ["education", "culture", "knowledge", "advantage", "bourdieu"],
+    "Family Engagement": ["education", "family", "involvement", "partnership", "support"],
+    "School Climate": ["education", "environment", "culture", "safety", "relationships"],
+
+    // Politiques et gouvernance éducative
+    "Educational Policy": ["policy", "education", "regulation", "standards", "reform"],
+    "School Reform": ["education", "change", "improvement", "systemic", "innovation"],
+    "Accountability Systems": ["education", "responsibility", "assessment", "standards", "reporting"],
+    "Teacher Professional Dev.": ["teachers", "development", "training", "growth", "skills"],
+    "Higher Education": ["education", "university", "college", "degrees", "research"],
+    "Early Childhood Education": ["education", "children", "preschool", "development", "learning"],
+    "Education Funding": ["education", "finance", "budget", "resources", "equity"]
+  }
+}
+
+
+
+
 // Ajoutez ici les autres disciplines (Neuroscience, Philosophy, etc.)
 };
 
