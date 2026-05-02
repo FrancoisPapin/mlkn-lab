@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Générateur de Configuration pour MLKN.lab</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    button { padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px; }
+    button:hover { background: #0056b3; }
+    #output { margin-top: 20px; white-space: pre-wrap; }
+    .discipline-buttons { margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h1>Générateur de Configuration pour DISCIPLINE_CONFIG</h1>
+  <p>Cliquez sur un bouton pour générer la configuration d'une discipline.</p>
+
+  <h2>Disciplines</h2>
+  <div class="discipline-buttons">
+    <!-- Boutons pour chaque discipline -->
+    <button onclick="generateConfig('Anthropology', './anthropology-data.js')">Anthropology</button>
+    <button onclick="generateConfig('Neuroscience', './neuroscience-data.js')">Neuroscience</button>
+    <button onclick="generateConfig('Philosophy', './philosophy-data.js')">Philosophy</button>
+    <button onclick="generateConfig('Interdisciplinary', './interdisciplinary-data.js')">Interdisciplinary</button>
+    <button onclick="generateConfig('Education Science', './education-science-data.js')">Education Science</button>
+    <button onclick="generateConfig('Computer Science', './computer-science-data.js')">Computer Science</button>
+    <button onclick="generateConfig('Environmental Science', './environmental-science-data.js')">Environmental Science</button>
+    <button onclick="generateConfig('Human Rights', './human-rights-data.js')">Human Rights</button>
+    <button onclick="generateConfig('Language Science', './language-science-data.js')">Language Science</button>
+    <button onclick="generateConfig('Systems Science', './systems-science-data.js')">Systems Science</button>
+  </div>
+
+  <h2>Résultat</h2>
+  <div id="output">
+    <p>La configuration générée apparaîtra ici. Copiez-la dans <code>DISCIPLINE_CONFIG</code> de <code>network-links-generator.js</code>.</p>
+  </div>
+
+  <script>
+    // Fonction pour charger un fichier data.js
+    function loadScript(url) {
+      return new Promise((resolve, reject) => {
+        // Supprimer le script s'il existe déjà
+        const existingScript = document.querySelector(`script[src="${url}"]`);
+        if (existingScript) {
+          existingScript.remove();
+        }
+        const script = document.createElement('script');
+        script.src = url;
+        script.onload = () => resolve(window.MAP_DATA);
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    // Fonction pour générer la configuration d'une discipline
+    async function generateConfig(disciplineName, dataUrl) {
+      try {
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = `<p>Chargement de ${disciplineName}...</p>`;
+
+        // Charger les données
+        await loadScript(dataUrl);
+        const data = window.MAP_DATA;
+
+        if (!data) {
+          throw new Error(`window.MAP_DATA non défini pour ${disciplineName}`);
+        }
+
+        // Extraire les clusters
+        const clusters = Object.keys(data.clusters || {});
+
+        // Extraire les nœuds par cluster
+        const nodesByCluster = {};
+        data.nodes.forEach(node => {
+          if (!nodesByCluster[node.cluster]) {
+            nodesByCluster[node.cluster] = [];
+          }
+          nodesByCluster[node.cluster].push(node.id);
+        });
+
+        // Générer les connexions entre clusters (par défaut, tous les clusters sont connectés)
+        const clusterConnections = {};
+        clusters.forEach(cluster => {
+          clusterConnections[cluster] = clusters.filter(c => c !== cluster);
+        });
+
+        // Générer les mots-clés par concept (simplifiés)
+        const conceptKeywords = {};
+        data.nodes.forEach(node => {
+          const keyword = node.id.toLowerCase()
+            .replace(/[&]/g, 'and')
+            .replace(/[ ]/g, '-');
+          conceptKeywords[node.id] = [keyword];
+        });
+
+        // Générer la configuration
+        const config = {
+          clusters: clusters,
+          clusterConnections: clusterConnections,
+          expertLinks: [], // À compléter manuellement
+          conceptKeywords: conceptKeywords
+        };
+
+        // Afficher le résultat
+        outputDiv.innerHTML = `
+          <h3>Configuration pour ${disciplineName}</h3>
+          <p>Copiez ce code dans <code>DISCIPLINE_CONFIG</code> de <code>network-links-generator.js</code> :</p>
+          <pre>
+"${disciplineName}": {
+  clusters: ${JSON.stringify(config.clusters, null, 2)},
+  clusterConnections: ${JSON.stringify(config.clusterConnections, null, 2)},
+  expertLinks: [], // À compléter manuellement
+  conceptKeywords: ${JSON.stringify(config.conceptKeywords, null, 2)}
+}</pre>
+          <p><strong>Prochaine étape</strong> : Ajoutez manuellement les <code>expertLinks</code> et améliorez les <code>conceptKeywords</code>.</p>
+        `;
+
+      } catch (error) {
+        document.getElementById('output').innerHTML = `
+          <p style="color: red;">Erreur pour ${disciplineName} : ${error.message}</p>
+          <p>Vérifiez que le fichier <code>${dataUrl}</code> existe et que <code>window.MAP_DATA</code> est bien défini.</p>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>
