@@ -482,7 +482,7 @@ window.MAP_DATA = {
       "source": "Human Evolution",
       "target": "Behavioral Ecology",
       "weight": 4
-    };
+    }
 
     
   ]
@@ -491,21 +491,18 @@ window.MAP_DATA = {
 };
 
 
-    // =============================================
-// SCRIPT À COPIER-COLLER ICI :
-// =============================================
+  // 2. SCRIPT AJOUTÉ ICI (APRÈS le };)
 (function() {
-  const data = window.MAP_DATA;
-  const { nodes, links } = data;
+  const { nodes, links } = window.MAP_DATA;
 
+  // Éviter les doublons
   const existingLinks = new Set();
   links.forEach(link => {
-    const key1 = `${link.source}-${link.target}`;
-    const key2 = `${link.target}-${link.source}`;
-    existingLinks.add(key1);
-    existingLinks.add(key2);
+    existingLinks.add(`${link.source}-${link.target}`);
+    existingLinks.add(`${link.target}-${link.source}`);
   });
 
+  // Fonction pour ajouter un lien
   function addLinkIfMissing(source, target, weight) {
     const key1 = `${source}-${target}`;
     const key2 = `${target}-${source}`;
@@ -529,7 +526,7 @@ window.MAP_DATA = {
         const node1 = clusterNodes[i].id;
         const node2 = clusterNodes[j].id;
         const avgSize = (clusterNodes[i].size + clusterNodes[j].size) / 2;
-        let weight = Math.floor(avgSize / 8); // Ajusté pour vos tailles (20-28 → weight 2-3)
+        let weight = Math.floor(avgSize / 8);
         if (weight < 3) weight = 3;
         if (weight > 5) weight = 5;
         addLinkIfMissing(node1, node2, weight);
@@ -537,7 +534,7 @@ window.MAP_DATA = {
     }
   });
 
-  // 2. Liens inter-clusters (règles spécifiques pour l'anthropologie)
+  // 2. Liens inter-clusters
   const clusterConnections = {
     "CULTURAL": ["LINGAUTH", "MEDICAL", "POLITANH"],
     "BIOANTH": ["ARCHAEO", "MEDICAL"],
@@ -555,13 +552,13 @@ window.MAP_DATA = {
       const cluster2Nodes = nodesByCluster[cluster2] || [];
       cluster1Nodes.forEach(node1 => {
         cluster2Nodes.forEach(node2 => {
-          addLinkIfMissing(node1.id, node2.id, 3); // Poids fixe pour les liens inter-clusters
+          addLinkIfMissing(node1.id, node2.id, 3);
         });
       });
     });
   });
 
-  // 3. Liens spécifiques (exemples pour l'anthropologie)
+  // 3. Liens spécifiques
   const specificLinks = [
     { source: "Ethnography", target: "Language & Culture", weight: 4 },
     { source: "Cultural Relativism", target: "Ethnolinguistics", weight: 3 },
@@ -575,9 +572,5 @@ window.MAP_DATA = {
     addLinkIfMissing(link.source, link.target, link.weight);
   });
 
-  console.log(`[Anthropology] Liens initiaux : ${35} → Liens finaux : ${links.length}`);
+  console.log(`[Anthropology] Liens initiaux : 35 → Liens finaux : ${links.length}`);
 })();
-
-// =============================================
-// FIN DU SCRIPT
-// =============================================
