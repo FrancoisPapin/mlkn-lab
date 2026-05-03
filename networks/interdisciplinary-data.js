@@ -450,15 +450,31 @@ var INTER = [
   {s:"Ethnography",t:"Network Theory",w:3,pair:["ANTH","SYS"]},
   {s:"Material Culture",t:"Self-Organization",w:2,pair:["ANTH","SYS"]},
 
-  // ── INTERDISCIPLINARITY ↔ INTRADISCIPLINARITY ────────────────────────────── :
-  {s: "Interdisciplinarity", t: "Epistemology", w: 5, pair: ["PHIL", "INTERDISC"]},
+  // ── INTERDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (central) ──────────────────────────────
+  {s: "Interdisciplinarity", t: "Philosophy of Science", w: 5, pair: ["PHIL", "INTERDISC"]},
   {s: "Interdisciplinarity", t: "Machine Learning", w: 5, pair: ["CS", "INTERDISC"]},
+  {s: "Interdisciplinarity", t: "Cognitive Control", w: 5, pair: ["NEURO", "INTERDISC"]},
+  {s: "Interdisciplinarity", t: "Complex Systems", w: 5, pair: ["SYS", "INTERDISC"]},
+  {s: "Interdisciplinarity", t: "Epistemology", w: 5, pair: ["PHIL", "INTERDISC"]},
+
+  / ── TRANSDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (transversal) ──────────────────────────────
   {s: "Transdisciplinarity", t: "Critical Theory", w: 4, pair: ["PHIL", "INTERDISC"]},
   {s: "Transdisciplinarity", t: "Complex Systems", w: 4, pair: ["SYS", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Sustainable Energy", w: 4, pair: ["ENV", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Human Rights", w: 4, pair: ["HR", "INTERDISC"]},
+
+  / ── KNOWLEDGE INTEGRATION Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
   {s: "Knowledge Integration", t: "Cognitive Control", w: 5, pair: ["NEURO", "INTERDISC"]},
   {s: "Knowledge Integration", t: "Decision Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
+  {s: "Knowledge Integration", t: "Artificial Intelligence", w: 5, pair: ["CS", "INTERDISC"]},
+  {s: "Knowledge Integration", t: "Ethics", w: 4, pair: ["PHIL", "INTERDISC"]},
+
+  / ── CROSSDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
   {s: "Cross-Disciplinary", t: "Artificial Intelligence", w: 4, pair: ["CS", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Phil. of Science", w: 4, pair: ["PHIL", "INTERDISC"]}
+  {s: "Cross-Disciplinary", t: "Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Computer Science", w: 4, pair: ["CS", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Philosophy", w: 4, pair: ["PHIL", "INTERDISC"]}
 ];
 
 // ── Build flat nodes/links arrays ─────────────────────────────────
