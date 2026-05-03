@@ -1752,8 +1752,8 @@ if (config.expertLinks && Array.isArray(config.expertLinks)) {
       addLink(link[0], link[1], link[2]);
     }
     // Si c'est un objet {source, target, weight}
-    else if (link.source && link.target && link.weight !== undefined) {
-      addLink(link.source, link.target, link.weight);
+    else if (link.s && link.t && link.w !== undefined) {
+  addLink(link.s, link.t, link.w * 2);  // Doublez le poids pour les liens experts
     }
     // Si c'est un objet personnalisé {s, t, w} (votre cas)
     else if (link.s && link.t && link.w !== undefined) {
