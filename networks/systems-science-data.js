@@ -237,6 +237,11 @@ window.MAP_DATA = {
       "size": 28
     },
     {
+      "id": "Fractals",
+      "cluster": "EMERGE",
+      "size": 22
+    },
+    {
       "id": "Self-Organization",
       "cluster": "EMERGE",
       "size": 26
@@ -288,6 +293,16 @@ window.MAP_DATA = {
     }
   ],
   "links": [
+    {
+      "source": "Fractals",
+      "target": "Emergence",
+      "weight": 5
+    },
+    {
+      "source": "Fractals",
+      "target": "Self-Organization",
+      "weight": 4
+    },
     {
       "source": "Criticality",
       "target": "Phase Transitions",
