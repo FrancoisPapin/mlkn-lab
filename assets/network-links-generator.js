@@ -1511,7 +1511,7 @@ const DISCIPLINE_CONFIG = {
 },
 
       
-"Interdisciplinary": {
+"Interdisciplinary Knowledge Network": {
   clusters: [
     "PHIL",      // Philosophie
     "EDUC",      // Sciences de l'éducation
