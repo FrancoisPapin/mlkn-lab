@@ -1745,11 +1745,22 @@ function generateLinksForDiscipline(disciplineName) {
   }
 
   // 3. Liens spécifiques (experts)
-  if (config.expertLinks) {
-    config.expertLinks.forEach(([source, target, weight]) => {
-      addLink(source, target, weight);
-    });
-  }
+  if (config.expertLinks && Array.isArray(config.expertLinks)) {
+  config.expertLinks.forEach(link => {
+    // Si c'est un tuple [source, target, weight]
+    if (Array.isArray(link) && link.length >= 3) {
+      addLink(link[0], link[1], link[2]);
+    }
+    // Si c'est un objet {source, target, weight}
+    else if (link.source && link.target && link.weight !== undefined) {
+      addLink(link.source, link.target, link.weight);
+    }
+    // Sinon, ignorez (ou loggez une erreur)
+    else {
+      console.warn("Format de lien invalide :", link);
+    }
+  });
+}
 
   // 4. Liens sémantiques (basés sur config.conceptKeywords)
   if (config.conceptKeywords) {
