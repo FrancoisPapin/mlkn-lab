@@ -363,6 +363,21 @@ window.MAP_DATA = {
   ],
   "links": [
     {
+      "source": "Theory of Mind",
+      "target": "Social Brain",
+      "weight": 5
+    },
+    {
+      "source": "Theory of Mind",
+      "target": "Executive Control (Neural)",
+      "weight": 4
+    },
+    {
+      "source": "Theory of Mind",
+      "target": "Attention Networks",
+      "weight": 3
+    },
+    {
       "source": "Action Potential",
       "target": "Ion Channels",
       "weight": 5
