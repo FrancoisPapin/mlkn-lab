@@ -136,10 +136,11 @@ var NODES = [
   {id:"Self-Organization",     disc:"SYS",    size:22, er:"THEORETICAL",     al:"SYSTEM"},
   
   // INTERDISCIPLINARY NODES
-  {id: "Interdisciplinarity",  disc: "INTERDISC", size: 30, er: "META", al: "SYSTEM"},
-  {id: "Transdisciplinarity", disc: "INTERDISC", size: 28, er: "META", al: "SYSTEM"},
-  {id: "Knowledge Integration", disc: "INTERDISC", size: 26, er: "META", al: "SYSTEM"},
-  {id: "Cross-Disciplinary",   disc: "INTERDISC", size: 24, er: "META", al: "SYSTEM"}
+  // INTERDISCIPLINARY NODES
+  {id: "Interdisciplinarity", disc: "INTERDISC", size: 35, er: "META", al: "SYSTEM"},
+  {id: "Transdisciplinarity", disc: "INTERDISC", size: 33, er: "META", al: "SYSTEM"},
+  {id: "Knowledge Integration", disc: "INTERDISC", size: 31, er: "META", al: "SYSTEM"},
+  {id: "Cross-Disciplinary",   disc: "INTERDISC", size: 29, er: "META", al: "SYSTEM"}
 ];
 
 // ── Intra-discipline links ────────────────────────────────────────
