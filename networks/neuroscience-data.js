@@ -363,6 +363,66 @@ window.MAP_DATA = {
   ],
   "links": [
     {
+      "source": "Perception",
+      "target": "Visual Cortex",
+      "weight": 5
+    },
+    {
+     "source": "Movement",
+      "target": "Motor System",
+      "weight": 5
+    },
+    {
+      "source": "Cognitive Control",
+      "target": "Executive Control (Neural)",
+      "weight": 5
+    },
+    {
+      "source": "Cognitive Control",
+      "target": "Attention Networks",
+      "weight": 4
+    },
+    {
+      "source": "Cognitive Control",
+      "target": "Working Memory (Neural)",
+      "weight": 4
+    },
+    {
+      "source": "Self-Referential Thought",
+      "target": "Cognitive Control",
+      "weight": 4
+    },
+    {
+      "source": "Self-Referential Thought",
+      "target": "Default Mode Network",
+      "weight": 4
+    },
+    {
+      "source": "Broca's Area",
+      "target": "Language Networks",
+      "weight": 5
+    },
+    {
+      "source": "Broca's Area",
+      "target": "Prefrontal Networks",
+      "weight": 4
+    },
+    {
+      "source": "Dopamine",
+      "target": "Neurotransmitter Systems",
+      "weight": 5
+    },
+    {
+      "source": "Dopamine",
+      "target": "Reward Circuits",
+      "weight": 5
+    },
+    {
+      "source": "Dopamine",
+      "target": "Synaptic Plasticity",
+      "weight": 4
+    },
+    {
       "source": "Theory of Mind",
       "target": "Social Brain",
       "weight": 5
