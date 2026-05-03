@@ -121,8 +121,13 @@ window.MAP_DATA = {
       "size": 18
     },
     {
+      "id": "Marine Ecosystems",
+      "cluster": "ECOLOGY",
+      "size": 22
+    },
+    {
       "id": "Hydrology",
-      "cluster": "HYDRO",  // Car "HYDRO" est déjà un cluster dans votre configuration
+      "cluster": "HYDRO",
       "size": 20
     },
     {
