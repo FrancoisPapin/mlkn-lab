@@ -287,3 +287,42 @@ html.map-page-root,body.map-page-root{height:100%;overflow:hidden}
 ::-webkit-scrollbar-thumb{background:#BBCFE8;border-radius:3px}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+
+/* ===== RESPONSIVE POUR LES GRAPHES ===== */
+@media (max-width: 768px) {
+  /* Conteneur principal du graphe */
+  .canvas-wrap {
+    width: 100vw !important;
+    height: calc(100vh - 100px) !important; /* Ajuste la hauteur pour éviter les chevauchements avec le header */
+    overflow: hidden !important;
+  }
+
+  /* SVG du graphe (D3.js) */
+  #sigma-mount, #sigma-mount canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+  }
+
+  /* Désactiver le défilement horizontal */
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  /* Ajuster la taille des panneaux latéraux (légende, toolbar) */
+  .legend {
+    max-height: 40vh !important;
+    min-width: 150px !important;
+  }
+
+  .toolbar {
+    gap: 3px !important;
+  }
+
+  /* Réduire la taille des boutons de la toolbar */
+  .tbtn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
