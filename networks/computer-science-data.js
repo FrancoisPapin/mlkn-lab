@@ -51,7 +51,7 @@ window.MAP_DATA = {
       "size": 28
     },
     {
-      "id": "AI",  // <-- Ajoutez ici
+      "id": "AI",
       "cluster": "MACHINE_LEARNING",
       "size": 28
     },
@@ -204,6 +204,11 @@ window.MAP_DATA = {
       "id": "Cybersecurity",
       "cluster": "SECURITY",
       "size": 24
+    },
+    {
+      "id": "Security",
+      "cluster": "CYBERSEC",
+      "size": 26
     },
     {
       "id": "Network Security",
