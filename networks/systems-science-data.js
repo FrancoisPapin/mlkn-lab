@@ -71,6 +71,11 @@ window.MAP_DATA = {
       "size": 22
     },
     {
+      "id": "Criticality",
+      "cluster": "COMPLEX",
+      "size": 22
+    },
+    {
       "id": "Power Laws",
       "cluster": "COMPLEX",
       "size": 20
