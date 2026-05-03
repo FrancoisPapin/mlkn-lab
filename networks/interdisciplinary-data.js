@@ -91,6 +91,7 @@ var NODES = [
   {id:"Human-Comp. Inter.",    disc:"CS",     size:20, er:"APPLIED",         al:"INDIVIDUAL"},
   {id:"Algorithms",            disc:"CS",     size:22, er:"THEORETICAL",     al:"SYSTEM"},
   {id:"Formal Methods",        disc:"CS",     size:16, er:"THEORETICAL",     al:"SYSTEM"},
+  {id: "Artificial Intelligence", disc: "CS", size: 30, er: "THEORETICAL", al: "SYSTEM"},
 
   // NEUROSCIENCE
   {id:"Synaptic Plasticity",   disc:"NEURO",  size:24, er:"EMPIRICAL",       al:"MOLECULAR"},
@@ -101,6 +102,7 @@ var NODES = [
   {id:"Predictive Processing", disc:"NEURO",  size:24, er:"THEORETICAL",     al:"MOLECULAR"},
   {id:"Default Mode Network",  disc:"NEURO",  size:20, er:"EMPIRICAL",       al:"INDIVIDUAL"},
   {id: "Cognitive Control",    disc:"NEURO", size: 24, er:"THEORETICAL",     al: "INDIVIDUAL"},
+  {id: "Decision Neuroscience", disc: "NEURO", size: 22, er: "THEORETICAL", al: "INDIVIDUAL"},
 
   // COGNITIVE PSYCHOLOGY
   {id:"Working Memory",        disc:"COGPSY", size:26, er:"EMPIRICAL",       al:"INDIVIDUAL"},
