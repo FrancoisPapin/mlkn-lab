@@ -17,7 +17,8 @@ var DISCIPLINES = {
   COGPSY: {label:"Cognitive Psychology",  color:"#1A4A7A", light:"#EBF2FA"},
   LANG:   {label:"Language Science",      color:"#2E7D52", light:"#EAFAF1"},
   ANTH:   {label:"Anthropology",          color:"#8E44AD", light:"#F5EEF8"},
-  SYS:    {label:"Systems Science",       color:"#D97706", light:"#FEF9EE"}
+  SYS:    {label:"Systems Science",       color:"#D97706", light:"#FEF9EE"},
+  INTERDISC: {label: "Interdisciplinary", color: "#8E44AD", light: "#F5EEF8"}
 };
 
 // ── Epistemic Role taxonomy (academic standard) ───────────────────
@@ -27,7 +28,8 @@ var EPISTEMIC = {
   METHODOLOGICAL: {label:"Methodological",  color:"#059669", icon:"◎"},
   EMPIRICAL:      {label:"Empirical",       color:"#D97706", icon:"◌"},
   APPLIED:        {label:"Applied",         color:"#DC2626", icon:"◍"},
-  NORMATIVE:      {label:"Normative",       color:"#7C3AED", icon:"◐"}
+  NORMATIVE:      {label:"Normative",       color:"#7C3AED", icon:"◐"},
+  META:           {label: "Meta-Level", color: "#6C5CE7", light: "#F5F3FF"}
 };
 
 // ── Levels of Analysis (scientific standard) ──────────────────────
@@ -35,7 +37,8 @@ var ANALYSIS_LEVELS = {
   MOLECULAR:  {label:"Molecular / Neural",  color:"#EF4444", tier:1},
   INDIVIDUAL: {label:"Individual",          color:"#F59E0B", tier:2},
   SOCIAL:     {label:"Social / Cultural",   color:"#10B981", tier:3},
-  SYSTEM:     {label:"System / Global",     color:"#3B82F6", tier:4}
+  SYSTEM:     {label:"System / Global",     color:"#3B82F6", tier:4},
+  SYSTEM: {label: "System", color: "#2D3436", light: "#E0E0E0"}
 };
 
 // ── Nodes (7–9 per discipline, no COGSCI) ────────────────────────
@@ -135,7 +138,6 @@ var NODES = [
   {id:"Resilience",            disc:"SYS",    size:20, er:"APPLIED",         al:"SYSTEM"},
   {id:"Self-Organization",     disc:"SYS",    size:22, er:"THEORETICAL",     al:"SYSTEM"},
   
-  // INTERDISCIPLINARY NODES
   // INTERDISCIPLINARY NODES
   {id: "Interdisciplinarity", disc: "INTERDISC", size: 35, er: "META", al: "SYSTEM"},
   {id: "Transdisciplinarity", disc: "INTERDISC", size: 33, er: "META", al: "SYSTEM"},
@@ -443,7 +445,17 @@ var INTER = [
   {s:"Social Structure",t:"Complex Systems",w:4,pair:["ANTH","SYS"]},
   {s:"Political Ecology",t:"Systems Thinking",w:4,pair:["ANTH","SYS"]},
   {s:"Ethnography",t:"Network Theory",w:3,pair:["ANTH","SYS"]},
-  {s:"Material Culture",t:"Self-Organization",w:2,pair:["ANTH","SYS"]}
+  {s:"Material Culture",t:"Self-Organization",w:2,pair:["ANTH","SYS"]},
+
+  // ── INTERDISCIPLINARITY ↔ INTRADISCIPLINARITY ────────────────────────────── :
+  {s: "Interdisciplinarity", t: "Epistemology", w: 5, pair: ["PHIL", "INTERDISC"]},
+  {s: "Interdisciplinarity", t: "Machine Learning", w: 5, pair: ["CS", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Critical Theory", w: 4, pair: ["PHIL", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Complex Systems", w: 4, pair: ["SYS", "INTERDISC"]},
+  {s: "Knowledge Integration", t: "Cognitive Control", w: 5, pair: ["NEURO", "INTERDISC"]},
+  {s: "Knowledge Integration", t: "Decision Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Artificial Intelligence", w: 4, pair: ["CS", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Philosophy of Science", w: 4, pair: ["PHIL", "INTERDISC"]}
 ];
 
 // ── Build flat nodes/links arrays ─────────────────────────────────
