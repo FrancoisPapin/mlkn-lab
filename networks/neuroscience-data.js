@@ -156,6 +156,11 @@ window.MAP_DATA = {
       "size": 24
     },
     {
+      "id": "Self-Referential Thought",
+      "cluster": "COGNEURO",
+      "size": 20
+    },
+    {
       "id": "Emotion Regulation (Neural)",
       "cluster": "COGNEURO",
       "size": 20
