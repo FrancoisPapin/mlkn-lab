@@ -105,7 +105,7 @@ const DISCIPLINE_CONFIG = {
       "Corporate Ethnography": ["business", "consumer", "marketing", "workplace"],
       "Policy Anthropology": ["policy", "government", "recommendations", "impact"]
     }
-  }
+  },
   
   "Cognitive Psychology": {
   clusters: [
@@ -224,7 +224,7 @@ const DISCIPLINE_CONFIG = {
     "N-Back Task": ["methods", "n-back", "working-memory", "updating", "cognition"],
     "Signal Detection Theory": ["methods", "signal-detection", "sensitivity", "bias", "perception"]
   }
-}
+},
 
 "Computer Science": {
   clusters: [
@@ -348,7 +348,7 @@ const DISCIPLINE_CONFIG = {
     "DevOps": ["ci-cd", "automation", "deployment", "monitoring", "containers"],
     "Federated Learning": ["distributed", "privacy", "collaborative", "model-aggregation", "local-training"]
   }
-}
+},
 
 "Education Science": {
   clusters: [
@@ -506,7 +506,7 @@ const DISCIPLINE_CONFIG = {
     "Early Childhood Education": ["education", "children", "preschool", "development", "learning"],
     "Education Funding": ["education", "finance", "budget", "resources", "equity"]
   }
-}
+},
 
 "Environmental Science": {
   clusters: [
@@ -663,7 +663,7 @@ const DISCIPLINE_CONFIG = {
     "Fossil Fuels": ["coal", "oil", "gas", "combustion", "emissions"],
     "Carbon Capture": ["storage", "sequestration", "technologies", "geoengineering", "mitigation"]
   }
-}
+},
 
 "Human Rights": {
   clusters: [
@@ -833,7 +833,7 @@ const DISCIPLINE_CONFIG = {
     "Labor Rights Movement": ["workers", "unions", "fair-wages", "conditions", "solidarity"],
     "Digital Rights Activism": ["privacy", "surveillance", "access", "freedom", "technology"]
   }
-}
+},
 
 "Language Science": {
   clusters: [
@@ -988,7 +988,7 @@ const DISCIPLINE_CONFIG = {
     "Word Embeddings": ["vector", "semantic-space", "word2vec", "glove", "contextual"],
     "Language Modeling": ["probabilistic", "prediction", "perplexity", "neural", "transformers"]
   }
-}
+},
 
 "Neuroscience": {
   clusters: [
@@ -1151,7 +1151,7 @@ const DISCIPLINE_CONFIG = {
     "Animal Models": ["mouse", "rat", "primate", "disease-models", "transgenic"],
     "Brain Stimulation Therapy": ["deep-brain-stimulation", "tms", "tdcs", "depression", "parkinson"]
   }
-}
+},
 
 "Philosophy": {
   clusters: [
@@ -1339,7 +1339,7 @@ const DISCIPLINE_CONFIG = {
     "Existentialism": ["sartre", "camus", "authenticity", "freedom", "absurd"],
     "Vienna Circle": ["logical-positivism", "carnap", "neurath", "verification", "empiricism"]
   }
-}
+},
 
 "Systems Science": {
   clusters: [
@@ -1508,7 +1508,7 @@ const DISCIPLINE_CONFIG = {
     "Risk Analysis": ["uncertainty", "probability", "hazards", "vulnerability", "mitigation"],
     "System of Systems": ["meta-systems", "interoperability", "hierarchy", "emergent-behavior", "integration"]
   }
-}
+},
 
       
 "Interdisciplinary": {
