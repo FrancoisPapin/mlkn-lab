@@ -460,7 +460,7 @@ var INTER = [
   // ── TRANSDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (transversal) ──────────────────────────────
   {s: "Transdisciplinarity", t: "Critical Theory", w: 4, pair: ["PHIL", "INTERDISC"]},
   {s: "Transdisciplinarity", t: "Complex Systems", w: 4, pair: ["SYS", "INTERDISC"]},
-  {s: "Transdisciplinarity", t: "Sustainable Energy", w: 4, pair: ["ENV", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Sustainability", w: 4, pair: ["ENV", "INTERDISC"]},
   {s: "Transdisciplinarity", t: "Human Rights", w: 4, pair: ["HR", "INTERDISC"]},
 
   // ── KNOWLEDGE INTEGRATION Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
