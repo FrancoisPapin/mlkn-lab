@@ -474,8 +474,8 @@ var INTER = [
   // ── CROSSDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
   {s: "Cross-Disciplinary", t: "Artificial Intelligence", w: 4, pair: ["CS", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Phil. of Science", w: 4, pair: ["PHIL", "INTERDISC"]},
-  {s: "Cross-Disciplinary", t: "Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
-  {s: "Cross-Disciplinary", t: "Computer Science", w: 4, pair: ["CS", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Predictive Processing", w: 4, pair: ["NEURO", "INTERDISC"]},
+  {s: "Cross-Disciplinary", t: "Algorithms", w: 4, pair: ["CS", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Phil. of Mind", w: 4, pair: ["PHIL", "INTERDISC"]}
 ];
 
