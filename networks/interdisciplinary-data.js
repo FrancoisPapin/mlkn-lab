@@ -133,7 +133,7 @@ var NODES = [
   {id:"Network Theory",        disc:"SYS",    size:22, er:"METHODOLOGICAL",  al:"SYSTEM"},
   {id:"Information Theory",    disc:"SYS",    size:24, er:"FOUNDATIONAL",    al:"SYSTEM"},
   {id:"Resilience",            disc:"SYS",    size:20, er:"APPLIED",         al:"SYSTEM"},
-  {id:"Self-Organization",     disc:"SYS",    size:22, er:"THEORETICAL",     al:"SYSTEM"}
+  {id:"Self-Organization",     disc:"SYS",    size:22, er:"THEORETICAL",     al:"SYSTEM"},
   
   // INTERDISCIPLINARY NODES
   {id: "Interdisciplinarity",  disc: "INTERDISC", size: 30, er: "META", al: "SYSTEM"},
