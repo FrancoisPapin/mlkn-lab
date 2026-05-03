@@ -1774,8 +1774,8 @@ if (config.expertLinks && Array.isArray(config.expertLinks)) {
         const keywords1 = config.conceptKeywords[concept1] || [];
         const keywords2 = config.conceptKeywords[concept2] || [];
         const commonKeywords = keywords1.filter(kw => keywords2.includes(kw));
-        if (commonKeywords.length >= 2) { // Seuil : 2 mots-clés en commun
-          const weight = Math.min(5, 3 + commonKeywords.length);
+        if (commonKeywords.length >= 3) {  // Seuil augmenté de 2 à 3
+          const weight = Math.min(5, 2 + commonKeywords.length);  // Poids de base réduit de 3 à 2
           addLink(concept1, concept2, weight);
         }
       });
