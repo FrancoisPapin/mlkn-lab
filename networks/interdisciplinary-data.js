@@ -461,20 +461,22 @@ var INTER = [
   {s: "Transdisciplinarity", t: "Critical Theory", w: 4, pair: ["PHIL", "INTERDISC"]},
   {s: "Transdisciplinarity", t: "Complex Systems", w: 4, pair: ["SYS", "INTERDISC"]},
   {s: "Transdisciplinarity", t: "Sustainability", w: 4, pair: ["ENV", "INTERDISC"]},
-  {s: "Transdisciplinarity", t: "Human Rights", w: 4, pair: ["HR", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Human Dignity", w: 4, pair: ["HR", "INTERDISC"]},
+  {s: "Transdisciplinarity", t: "Ethics", w: 4, pair: ["HR", "INTERDISC"]},
 
   // ── KNOWLEDGE INTEGRATION Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
   {s: "Knowledge Integration", t: "Cognitive Control", w: 5, pair: ["NEURO", "INTERDISC"]},
   {s: "Knowledge Integration", t: "Decision Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
   {s: "Knowledge Integration", t: "Artificial Intelligence", w: 5, pair: ["CS", "INTERDISC"]},
   {s: "Knowledge Integration", t: "Ethics", w: 4, pair: ["PHIL", "INTERDISC"]},
-
+  {s: "Knowledge Integration", t: "Executive Control", w: 4, pair: ["COGPSY", "INTERDISC"]},
+  
   // ── CROSSDISCIPLINARITY Links ↔ INTRADISCIPLINARITY Nodes (synthèse) ──────────────────────────────
   {s: "Cross-Disciplinary", t: "Artificial Intelligence", w: 4, pair: ["CS", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Phil. of Science", w: 4, pair: ["PHIL", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Neuroscience", w: 4, pair: ["NEURO", "INTERDISC"]},
   {s: "Cross-Disciplinary", t: "Computer Science", w: 4, pair: ["CS", "INTERDISC"]},
-  {s: "Cross-Disciplinary", t: "Philosophy", w: 4, pair: ["PHIL", "INTERDISC"]}
+  {s: "Cross-Disciplinary", t: "Phil. of Mind", w: 4, pair: ["PHIL", "INTERDISC"]}
 ];
 
 // ── Build flat nodes/links arrays ─────────────────────────────────
