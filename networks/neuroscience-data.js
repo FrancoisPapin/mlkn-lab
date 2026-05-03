@@ -111,6 +111,11 @@ window.MAP_DATA = {
       "size": 22
     },
     {
+      "id": "Broca's Area",
+      "cluster": "SYSTEMS",
+      "size": 22
+    },
+    {
       "id": "Limbic System",
       "cluster": "SYSTEMS",
       "size": 24
